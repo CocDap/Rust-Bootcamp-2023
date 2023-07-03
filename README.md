@@ -8,7 +8,7 @@ See https://rustup.rs
 
 ```
 git clone https://github.com/CocDap/Rust-Bootcamp-2023
-cd vbi-rust-bootcamp-2023
+cd Rust-Bootcamp-2023
 ```
 ## Welcome to VBI Rust Bootcamp by VBI Academy  🦀 
 
