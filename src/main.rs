@@ -1,3 +1,6 @@
 fn main() {
-    println!("Hello, Rust Bootcamp by VBI Academy!");
+    for i in 1..=3 {
+        print!("{i} ");
+    
+    }
 }
