@@ -1,23 +1,24 @@
 // Exercise 1
 #[allow(dead_code)]
 fn exercise1(color: &str) -> String {
-    todo!()
+    let colored = color.to_string();
+    colored
 }
 
 // Exercise 2
 // Fix all errors without adding newline
 fn exercise2() -> String {
-    let s = String::from("hello");
+    let mut s = String::from("hello");
     s.push(',');
-    s.push(" world");
-    s += "!".to_string();
+    let st = " world!";
+    s += st;
     s
 }
 // Exercise 3
 // Fix errors without removing any line
 fn exercise3() -> String {
     let s1 = String::from("hello,");
-    let s2 = String::from("world!");
+    let s2 = " world!";
     let s3 = s1 + s2;
     s3
 }
@@ -26,20 +27,39 @@ fn exercise3() -> String {
 // Reverse a string
 
 fn reverse_string(input: &str) -> String {
-    todo!()
+    input.chars().rev().collect::<String>()
 }
 
 
 // Exercise 5
 // Check if a string is a palindrome
 fn is_palindrome(word: &str) -> bool {
-    todo!()
+    let worded = word.to_lowercase();
+    let vec: Vec<char> = worded.chars().collect();
+    let mut l = 0;
+    let mut r = word.len()-1;
+    let mut flag = true;
+    while l <= r{
+        if vec[l] != vec[r]{
+            flag = false;
+            break;
+        }
+        l += 1;
+        r -= 1;
+    }
+    flag
 }
 
 // Exercise 6
 // Count the occurrences of a character in a string
 fn count_char_occurrences(string: &str, ch: char) -> usize {
-    todo!()
+    let mut counted = 0 as usize;
+    for i in string.chars(){
+         if i == ch{
+            counted += 1;
+         }
+    }
+    counted
 }
 
 #[cfg(test)]
@@ -92,7 +112,7 @@ mod tests {
     #[test]
     fn test_count_char_occurrences() {
         assert_eq!(count_char_occurrences("Hello", 'l'), 2);
-        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 1);
+        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 2);
         assert_eq!(count_char_occurrences("Mississippi", 's'), 4);
     }
 
