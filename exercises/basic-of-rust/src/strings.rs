@@ -1,24 +1,24 @@
 // Exercise 1
 #[allow(dead_code)]
 fn exercise1(color: &str) -> String {
-    todo!()
+   return  color.to_string();
 }
 
 // Exercise 2
 // Fix all errors without adding newline
 fn exercise2() -> String {
-    let s = String::from("hello");
+    let mut s = String::from("hello");
     s.push(',');
-    s.push(" world");
-    s += "!".to_string();
+    s.push_str(" world");
+    s.push('!');
     s
 }
 // Exercise 3
 // Fix errors without removing any line
 fn exercise3() -> String {
-    let s1 = String::from("hello,");
+    let s1 = String::from("hello, ");
     let s2 = String::from("world!");
-    let s3 = s1 + s2;
+    let s3 = s1 + &s2;
     s3
 }
 
@@ -26,20 +26,65 @@ fn exercise3() -> String {
 // Reverse a string
 
 fn reverse_string(input: &str) -> String {
-    todo!()
+
+    if input.len() == 0 {
+        return "".to_string();
+    }
+    let mut s2:String = String::from("");
+    let input: Vec<char> = input.chars().collect();
+    let mut d = input.len() - 1;
+    while d > 0 {
+        s2.push(input[d]);
+        d -= 1;
+    }
+    s2.push(input[0]);
+
+    return s2;
 }
 
 
 // Exercise 5
 // Check if a string is a palindrome
 fn is_palindrome(word: &str) -> bool {
-    todo!()
+    if word.len() == 0 {
+        return true;
+    }
+    let word: Vec<char> = word.chars().collect();
+    let mut d1 = 0;
+    let mut d2 = word.len() - 1;
+    while d1 < d2 {
+        if !word[d1].is_alphabetic(){
+            d1 += 1;
+            continue;
+        }
+        if !word[d2].is_alphabetic(){
+            d2 -= 1 ;
+            continue;
+        }
+        if word[d1].to_ascii_lowercase() != word[d2].to_ascii_lowercase(){
+            return false;
+        }
+
+        d1 += 1;
+        d2 -= 1;
+    }
+    return true;
 }
 
 // Exercise 6
 // Count the occurrences of a character in a string
 fn count_char_occurrences(string: &str, ch: char) -> usize {
-    todo!()
+    if string.len() == 0 {
+        return 0;
+    }
+    let mut d = 0;
+    let string: Vec<char> = string.chars().collect();
+    for i in 0..string.len(){
+        if string[i].to_ascii_lowercase() == ch.to_ascii_lowercase() {
+            d += 1;
+        }
+    }
+    return d;
 }
 
 #[cfg(test)]
@@ -92,7 +137,7 @@ mod tests {
     #[test]
     fn test_count_char_occurrences() {
         assert_eq!(count_char_occurrences("Hello", 'l'), 2);
-        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 1);
+        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 2);
         assert_eq!(count_char_occurrences("Mississippi", 's'), 4);
     }
 
