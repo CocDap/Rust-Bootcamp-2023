@@ -1,24 +1,24 @@
 // Exercise 1
 #[allow(dead_code)]
 fn exercise1(color: &str) -> String {
-    todo!()
+    return color.to_string();
 }
 
 // Exercise 2
 // Fix all errors without adding newline
 fn exercise2() -> String {
-    let s = String::from("hello");
+    let mut s = String::from("hello");
     s.push(',');
-    s.push(" world");
-    s += "!".to_string();
+    s.push_str(" world");
+    s += "!" as &str;
     s
 }
 // Exercise 3
 // Fix errors without removing any line
 fn exercise3() -> String {
-    let s1 = String::from("hello,");
+    let s1 = String::from("hello, ");
     let s2 = String::from("world!");
-    let s3 = s1 + s2;
+    let s3 = s1 + s2.as_str();
     s3
 }
 
@@ -26,20 +26,32 @@ fn exercise3() -> String {
 // Reverse a string
 
 fn reverse_string(input: &str) -> String {
-    todo!()
+    let res = input as &str;
+    return res.chars().rev().collect();
 }
-
 
 // Exercise 5
 // Check if a string is a palindrome
 fn is_palindrome(word: &str) -> bool {
-    todo!()
+    if word.to_lowercase() == reverse_string(word).to_lowercase() {
+        return true;
+    }
+    false
 }
 
 // Exercise 6
 // Count the occurrences of a character in a string
 fn count_char_occurrences(string: &str, ch: char) -> usize {
-    todo!()
+    let mut cnt = 0;
+    let mut new_string = String::new();
+    new_string.push_str(string);
+
+    for k in new_string.chars() {
+        if k == ch {
+            cnt = cnt + 1;
+        }
+    }
+    return cnt;
 }
 
 #[cfg(test)]
@@ -63,7 +75,7 @@ mod tests {
     fn exercise3_work() {
         assert_eq!("hello, world!".to_string(), exercise3());
     }
-    
+
     // Test for exercise 4
     #[test]
     fn test_reverse_string() {
@@ -92,8 +104,7 @@ mod tests {
     #[test]
     fn test_count_char_occurrences() {
         assert_eq!(count_char_occurrences("Hello", 'l'), 2);
-        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 1);
+        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 2);
         assert_eq!(count_char_occurrences("Mississippi", 's'), 4);
     }
-
 }
