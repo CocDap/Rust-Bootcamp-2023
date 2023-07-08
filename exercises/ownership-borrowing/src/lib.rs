@@ -3,8 +3,9 @@
 fn exercise1() {
     // Use as many approaches as you can to make it work
     let x = String::from("hello, world");
-    let y = x;
+    let y = &x;
     let z = x;
+    
 }
 
 // Exercise 2
@@ -33,7 +34,7 @@ fn exercise3() {
 
     let values_number = values.len();
 
-    let additions: Vec<usize> = vec![0];
+    let additions = &vec![0];
 
     println!("{:?}", values_number);
 
@@ -42,7 +43,7 @@ fn exercise3() {
 
         // Sumar valores en additions
         for element_index in additions {
-            let addition_aux = values[element_index];
+            let addition_aux = values[*element_index];
             addition = addition_aux + addition;
         }
     }
@@ -50,10 +51,10 @@ fn exercise3() {
 
 // Exercise 4
 // Make it compile
-fn exercise4(value: u32) -> &'static str {
+fn exercise4(value: u32) -> String {
     let str_value = value.to_string(); // Convert u32 to String
     let str_ref: &str = &str_value; // Obtain a reference to the String
-    str_ref // Return the reference to the String
+    str_ref.to_string() // Return the reference to the String
 }
 
 // Exercise 5
@@ -67,9 +68,9 @@ fn exercise5() {
     let res = match my_map.get(&key) {
         Some(child) => child,
         None => {
-            let value = "3.0".to_string();
-            my_map.insert(key, value);
-            &value // HERE IT FAILS
+            let value = "3.0";
+            my_map.insert(key, value.to_string());
+            value // HERE IT FAILS
         }
     };
 
@@ -82,14 +83,15 @@ fn exercise5() {
 use std::io;
 
 fn exercise6() {
-    let mut prev_key: &str = "";
+    let mut prev_key:String = String::from("");
 
     for line in io::stdin().lines() {
         let s = line.unwrap();
 
         let data: Vec<&str> = s.split("\t").collect();
+
         if prev_key.len() == 0 {
-            prev_key = data[0];
+            prev_key = data[0].to_string();
         }
     }
 }
@@ -99,8 +101,8 @@ fn exercise6() {
 fn exercise7() {
     let mut v: Vec<&str> = Vec::new();
     {
-        let chars = [b'x', b'y', b'z'];
-        let s: &str = std::str::from_utf8(&chars).unwrap();
+        let chars = &[b'x', b'y', b'z'];
+        let s: &str = std::str::from_utf8(chars).unwrap();
         v.push(&s);
     }
     println!("{:?}", v);
@@ -112,10 +114,10 @@ fn exercise8() {
     let mut accounting = vec!["Alice", "Ben"];
     
     loop {
-        let mut add_input = String::from("");
+        let mut add_input = "";
 
         io::stdin()
-            .read_line(&mut add_input)
+            .read_line(&mut add_input.to_string())
             .expect("Failed to read line");
 
         let add_vec: Vec<&str> = add_input.trim()[..].split_whitespace().collect();
