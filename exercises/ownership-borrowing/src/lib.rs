@@ -17,9 +17,8 @@ fn exercise2() {
     println!("{}", s2);
 }
 // Only modify the code below!
-fn take_ownership(s: String) -> String {
-    //println!("{}", s);
-    s
+fn take_ownership(s: String) {
+    println!("{}", s);
 }
 
 // Exercise 3
