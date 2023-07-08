@@ -35,7 +35,7 @@ fn exercise3() {
 
     let values_number = values.len();
 
-    let additions: Vec<usize> = vec![0];
+    let additions = &vec![0];
 
     println!("{:?}", values_number);
 
@@ -44,7 +44,7 @@ fn exercise3() {
 
         // Sumar valores en additions
         for element_index in additions {
-            let addition_aux = values[element_index];
+            let addition_aux = values[*element_index];
             addition = addition_aux + addition;
         }
     }
@@ -84,14 +84,15 @@ fn exercise5() {
 use std::io;
 
 fn exercise6() {
-    let mut prev_key: &str = "";
+    let mut prev_key:String = String::from("");
 
     for line in io::stdin().lines() {
         let s = line.unwrap();
 
         let data: Vec<&str> = s.split("\t").collect();
+
         if prev_key.len() == 0 {
-            prev_key = data[0];
+            prev_key = data[0].to_string();
         }
     }
 }
