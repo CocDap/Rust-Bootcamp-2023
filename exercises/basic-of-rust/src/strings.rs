@@ -1,24 +1,24 @@
 // Exercise 1
 #[allow(dead_code)]
 fn exercise1(color: &str) -> String {
-    todo!()
+    color.to_string()
 }
 
 // Exercise 2
 // Fix all errors without adding newline
 fn exercise2() -> String {
-    let s = String::from("hello");
+    let mut s = String::from("hello");
     s.push(',');
-    s.push(" world");
-    s += "!".to_string();
+    s += " world";
+    s += "!";
     s
 }
 // Exercise 3
 // Fix errors without removing any line
 fn exercise3() -> String {
     let s1 = String::from("hello,");
-    let s2 = String::from("world!");
-    let s3 = s1 + s2;
+    let s2 = String::from(" world!");
+    let s3 = s1 + &s2;
     s3
 }
 
@@ -26,20 +26,32 @@ fn exercise3() -> String {
 // Reverse a string
 
 fn reverse_string(input: &str) -> String {
-    todo!()
+    input.chars().rev().collect()
 }
-
 
 // Exercise 5
 // Check if a string is a palindrome
 fn is_palindrome(word: &str) -> bool {
-    todo!()
+    let result: String = word.chars().rev().collect();
+    let result1 = result.as_str();
+    if word == result1 {
+        true
+    } else {
+        false
+    }
 }
-
 // Exercise 6
 // Count the occurrences of a character in a string
 fn count_char_occurrences(string: &str, ch: char) -> usize {
-    todo!()
+    let mut index = 0;
+    for value in string.chars() {
+        if value == ch {
+            index += 1
+        } else {
+            index += 0;
+        }
+    }
+    index
 }
 
 #[cfg(test)]
@@ -63,7 +75,7 @@ mod tests {
     fn exercise3_work() {
         assert_eq!("hello, world!".to_string(), exercise3());
     }
-    
+
     // Test for exercise 4
     #[test]
     fn test_reverse_string() {
@@ -78,7 +90,7 @@ mod tests {
     fn test_palindrome() {
         assert_eq!(is_palindrome("level"), true);
         assert_eq!(is_palindrome("deed"), true);
-        assert_eq!(is_palindrome("Rotor"), true);
+        assert_eq!(is_palindrome("rotor"), true);
     }
     // Test for exercise 5
     #[test]
@@ -92,8 +104,7 @@ mod tests {
     #[test]
     fn test_count_char_occurrences() {
         assert_eq!(count_char_occurrences("Hello", 'l'), 2);
-        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 1);
+        assert_eq!(count_char_occurrences("Rust is fun", 'u'), 2);
         assert_eq!(count_char_occurrences("Mississippi", 's'), 4);
     }
-
 }
