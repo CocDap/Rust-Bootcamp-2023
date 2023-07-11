@@ -2,10 +2,20 @@
 // Fix the error
 // Make it compile
 // Run test
+#[derive(Debug)]
 struct Person {
     name: String,
     age: u8,
     hobby: String
+}
+impl PartialEq for Person
+{
+    fn eq(&self, other: &Self) -> bool {
+        if self.name == other.name && self.age == other.age && self.hobby == other.hobby {
+            return true;
+        }
+        false
+    }
 }
 fn exercise1() -> Person {
     let age = 30;
@@ -176,10 +186,10 @@ mod tests {
             age: 30,
             hobby:String::from("Rust") 
         };
-        // assert_eq!(p, p_expectation);
-        assert_eq!(p.name, p_expectation.name);
-        assert_eq!(p.age, p_expectation.age);
-        assert_eq!(p.hobby, p_expectation.hobby);
+        assert_eq!(p, p_expectation);
+        // assert_eq!(p.name, p_expectation.name);
+        // assert_eq!(p.age, p_expectation.age);
+        // assert_eq!(p.hobby, p_expectation.hobby);
         
     }
 

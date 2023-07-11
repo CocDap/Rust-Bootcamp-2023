@@ -80,6 +80,7 @@ impl State {
 // Exercise 3
 // Fix the errors
 // Run tests
+#[derive(Debug, PartialEq)]
 enum Direction {
     North,
     East,
@@ -149,10 +150,10 @@ mod tests {
 
     #[test]
     fn exercise3_should_work() {
-        // assert_eq!(Direction::North.opposite(), Direction::South);
-        // assert_eq!(Direction::East.opposite(), Direction::West);
-        // assert_eq!(Direction::South.opposite(), Direction::North);
-        // assert_eq!(Direction::West.opposite(), Direction::East);
+        assert_eq!(Direction::North.opposite(), Direction::South);
+        assert_eq!(Direction::East.opposite(), Direction::West);
+        assert_eq!(Direction::South.opposite(), Direction::North);
+        assert_eq!(Direction::West.opposite(), Direction::East);
     }
 
     // Test for exercise 4
