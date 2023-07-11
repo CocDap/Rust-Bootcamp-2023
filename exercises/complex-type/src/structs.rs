@@ -2,10 +2,20 @@
 // Fix the error
 // Make it compile
 // Run test
+#[derive(Debug)]
 struct Person {
     name: String,
     age: u8,
     hobby: String
+}
+impl PartialEq for Person
+{
+    fn eq(&self, other: &Self) -> bool {
+        if self.name == other.name && self.age == other.age && self.hobby == other.hobby {
+            return true;
+        }
+        false
+    }
 }
 fn exercise1() -> Person {
     let age = 30;
@@ -33,18 +43,18 @@ struct Agent  {
 // Implementation of methods for the Person struct
 impl Agent {
     // Create a new Person instance
-    fn new(name: String, age: u32) -> Agent {
-        Agent { name, age }
+    fn new(name: String, age: u32) -> Self {
+        Self { name, age }
     }
 
     // Get the name of the person
-    fn get_name(&self) -> &str {
-        todo!()
+    fn get_name(&self) -> String {
+        self.name.to_string()
     }
 
     // Get the age of the person
     fn get_age(&self) -> u32 {
-        todo!()
+        self.age
     }
 }
 
@@ -58,28 +68,28 @@ struct Calculator {
 
 impl Calculator {
     fn new() -> Self {
-        Calculator { value: 0 }
+        Self { value: 0 }
     }
 
-    fn add(&self, num: i32) {
+    fn add(&mut self, num: i32) {
         self.value += num;
     }
 
-    fn subtract(mut self, num: i32) {
+    fn subtract(&mut self, num: i32) {
         self.value -= num;
     }
-    fn clear(self) {
+    fn clear(&mut self) {
         self.value = 0;
     }
 
-    fn get_value(self) -> i32 {
+    fn get_value(&self) -> i32 {
         self.value
     }
 }
 
 // Exercise 4
 // Make it compile
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct User {
     first: String,
     last: String,
@@ -95,7 +105,7 @@ fn exercise4() {
 
     let u2 = User {
         first: String::from("Mary"),
-        ..u1
+        ..u1.clone()
         
     };
 
@@ -122,10 +132,10 @@ fn exercise5() {
     });
 
     
-    let moved = foos[0];
+    let moved = &foos[0];
 
     
-    let moved_field = foos[0].str_val;
+    let moved_field = &foos[0].str_val;
 }
 
 // Exercise 6
@@ -153,12 +163,12 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
-        // Something goes here...
+    fn is_international(&self) -> bool {
+        !self.sender_country.eq_ignore_ascii_case(self.recipient_country.as_str())
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
-        // Something goes here...
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
+        self.weight_in_grams * cents_per_gram
     }
 }
 
@@ -177,6 +187,9 @@ mod tests {
             hobby:String::from("Rust") 
         };
         assert_eq!(p, p_expectation);
+        // assert_eq!(p.name, p_expectation.name);
+        // assert_eq!(p.age, p_expectation.age);
+        // assert_eq!(p.hobby, p_expectation.hobby);
         
     }
 
