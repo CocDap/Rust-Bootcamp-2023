@@ -15,5 +15,13 @@ name = "complex-type"
 version = "0.1.0"
 
 [[package]]
+name = "generic-type"
+version = "0.1.0"
+
+[[package]]
 name = "ownership-borrowing"
+version = "0.1.0"
+
+[[package]]
+name = "traits"
 version = "0.1.0"
