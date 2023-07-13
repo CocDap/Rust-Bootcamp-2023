@@ -2,6 +2,10 @@
 // Fix the error
 // Make it compile
 // Run test
+// fn main() {
+//     let Hi = exercise1();
+//     println!("Hi : name = {}, age = {}, hobby = {}",Hi.name,Hi.age,Hi.hobby);
+// }
 struct Person {
     name: String,
     age: u8,
@@ -15,7 +19,6 @@ fn exercise1() -> Person {
         age,
         hobby: String::from("Rust")
     };
-
     p
 }
 
@@ -23,7 +26,12 @@ fn exercise1() -> Person {
 // Fix the error
 // Make it compile
 // Run test
-
+// fn main() {
+//     let Hi = Agent::new("Nguyen Van A".to_string(), 20);
+//     let a = Hi.get_age();
+//     let n = Hi.get_name();
+//     println!("name = {} , age = {} ", a,n);
+// }
 // Define the struct
 struct Agent  {
     name: String,
@@ -39,12 +47,12 @@ impl Agent {
 
     // Get the name of the person
     fn get_name(&self) -> &str {
-        todo!()
+        self.name.as_str()
     }
 
     // Get the age of the person
     fn get_age(&self) -> u32 {
-        todo!()
+        self.age
     }
 }
 
@@ -52,6 +60,14 @@ impl Agent {
 // Fix the error
 // Make it compile
 // Run test
+// fn main() {
+//     let mut test = Calculator::new();
+//     test.add(20);
+//     test.subtract(30);
+//     test.clear();
+//     println!("value = {}",test.get_value());
+    
+// }
 struct Calculator {
     value: i32,
 }
@@ -61,14 +77,14 @@ impl Calculator {
         Calculator { value: 0 }
     }
 
-    fn add(&self, num: i32) {
+    fn add(&mut self, num: i32) {
         self.value += num;
     }
 
-    fn subtract(mut self, num: i32) {
+    fn subtract(&mut self, num: i32) {
         self.value -= num;
     }
-    fn clear(self) {
+    fn clear(&mut self) {
         self.value = 0;
     }
 
@@ -76,7 +92,6 @@ impl Calculator {
         self.value
     }
 }
-
 // Exercise 4
 // Make it compile
 #[derive(Debug)]
@@ -95,13 +110,15 @@ fn exercise4() {
 
     let u2 = User {
         first: String::from("Mary"),
-        ..u1
-        
+        last: String::from(&u1.last),
+        age: u1.age,
+
     };
 
     println!("user: {:#?}", u1);
-
+    println!("user: {:#?}", u2);
 }
+
 
 // Exercise 5
 // Make it compile
@@ -122,10 +139,10 @@ fn exercise5() {
     });
 
     
-    let moved = foos[0];
+    let moved = &mut foos[0];
 
     
-    let moved_field = foos[0].str_val;
+    let moved_field =&mut foos[0].str_val;
 }
 
 // Exercise 6
@@ -153,12 +170,12 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
-        // Something goes here...
+    fn is_international(&self) -> bool {
+        self.recipient_country != self.sender_country
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
-        // Something goes here...
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
+        cents_per_gram * self.weight_in_grams
     }
 }
 
