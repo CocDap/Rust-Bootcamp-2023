@@ -55,3 +55,21 @@ cargo test --test structs
 cargo test --test enums
 
 Nội dung bài: https://github.com/CocDap/Rust-Bootcamp-2023/tree/class-3-code-content
+
+
+-------Bài 4
+Gửi mọi người tài liệu và bài tập của Class 4 : Generic type và Traits
+
+Tài liệu :
++ Slide bài giảng:https://docs.google.com/presentation/d/15KcXpGd2Yda0m-H9cJ2RdTLhpgINeulx/edit?usp=sharing&ouid=102186380803281013089&rtpof=true&sd=true
++ Code trong bài giảng : https://github.com/CocDap/Rust-Bootcamp-2023/tree/class-4-code-content?fbclid=IwAR22hUrbiZJn4NkDbp41R3nq06HyfylYc6Th0Kd6nq9pa0TbYyj2JaZpuUA
+
+Đề bài: Hoàn thành tất cả các exercise của class 4 gồm có Generic type và Traits
+https://github.com/CocDap/Rust-Bootcamp-2023/tree/class-4-exercises
+Yêu cầu:
+
++ Sửa lỗi (compile)
++ add logic 
++ chạy test 
+
+Gửi mọi người Record bài class 4 : https://youtu.be/E_wqonSobpE
