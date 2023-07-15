@@ -1,0 +1,47 @@
+[package]
+name = "Rust-Bootcamp-2023"
+version = "0.1.0"
+edition = "2021"
+authors = ["CocDap"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+members = [
+  "./exercises/basic-of-rust",
+  "./exercises/ownership-borrowing",
+  "./exercises/complex-type",
+  "./exercises/generic-type",
+  "./exercises/traits",
+
+]
+
+[[test]]
+name = "conditions"
+path = "./exercises/basic-of-rust/src/conditions.rs"
+
+[[test]]
+name = "strings"
+path = "./exercises/basic-of-rust/src/strings.rs"
+
+[[test]]
+name = "functions"
+path = "./exercises/basic-of-rust/src/functions.rs"
+
+[[test]]
+name = "structs"
+path = "./exercises/complex-type/src/structs.rs"
+
+[[test]]
+name = "enums"
+path = "./exercises/complex-type/src/enums.rs"
+
+[[test]]
+name = "generic-type"
+path = "./exercises/generic-type/src/lib.rs"
+
+[[test]]
+name = "traits"
+path = "./exercises/traits/src/lib.rs"
+
+
+[dependencies]
