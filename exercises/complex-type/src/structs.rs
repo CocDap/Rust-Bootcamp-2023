@@ -2,16 +2,10 @@
 // Fix the error
 // Make it compile
 // Run test
-#[derive(Debug)]
 struct Person {
     name: String,
     age: u8,
     hobby: String
-}
-impl PartialEq for Person {
-    fn eq(&self, other: &Self) -> bool {
-        self.name == other.name
-    }
 }
 fn exercise1() -> Person {
     let age = 30;
@@ -45,12 +39,12 @@ impl Agent {
 
     // Get the name of the person
     fn get_name(&self) -> &str {
-        &self.name
+        todo!()
     }
 
     // Get the age of the person
     fn get_age(&self) -> u32 {
-        self.age
+        todo!()
     }
 }
 
@@ -58,7 +52,6 @@ impl Agent {
 // Fix the error
 // Make it compile
 // Run test
-#[derive(Copy, Clone)]
 struct Calculator {
     value: i32,
 }
@@ -68,27 +61,25 @@ impl Calculator {
         Calculator { value: 0 }
     }
 
-    fn add(&mut self, num: i32) {
+    fn add(&self, num: i32) {
         self.value += num;
     }
 
-    fn subtract(&mut self, num: i32) {
+    fn subtract(mut self, num: i32) {
         self.value -= num;
     }
-
-    fn clear(&mut self) {
+    fn clear(self) {
         self.value = 0;
     }
 
-    fn get_value(&self) -> i32 {
+    fn get_value(self) -> i32 {
         self.value
     }
 }
 
 // Exercise 4
 // Make it compile
-#[derive(Debug, Clone)]
-#[allow(dead_code)]
+#[derive(Debug)]
 struct User {
     first: String,
     last: String,
@@ -104,7 +95,7 @@ fn exercise4() {
 
     let u2 = User {
         first: String::from("Mary"),
-        ..u1.clone()
+        ..u1
         
     };
 
@@ -114,11 +105,11 @@ fn exercise4() {
 
 // Exercise 5
 // Make it compile
-#[derive(Clone)]
 struct Foo {
     str_val: String,
     int_val: i32,
 }
+
 fn exercise5() {
     let mut foos = Vec::new();
     foos.push(Foo {
@@ -131,10 +122,10 @@ fn exercise5() {
     });
 
     
-    let moved = foos[0].clone();
+    let moved = foos[0];
 
     
-    let moved_field = foos[0].str_val.clone();
+    let moved_field = foos[0].str_val;
 }
 
 // Exercise 6
@@ -162,14 +153,12 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> bool {
+    fn is_international(&self) -> ??? {
         // Something goes here...
-        self.sender_country != self.recipient_country
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> i32 {
+    fn get_fees(&self, cents_per_gram: i32) -> ??? {
         // Something goes here...
-        self.weight_in_grams * cents_per_gram
     }
 }
 
