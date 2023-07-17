@@ -11,7 +11,6 @@ struct Position<T> {
 }
 
 
-
 // Exercise 2
 // Modify this struct to make the code work
 // Make it compile
@@ -39,6 +38,7 @@ impl<T>Val<T>{
         &self.val
     }
 }
+
 
 fn exercise3() {
     let x = Val{ val: 3.0 };
