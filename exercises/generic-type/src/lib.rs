@@ -1,6 +1,18 @@
 // Exercise 1 
 // Implement struct Point to make it work.
 // Make it compile
+struct Position<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Position<T> {
+    fn new(x: T, y: T) -> Position<T> {
+        Position { x, y }
+    }
+}
+
+
 fn exercise1() {
     let integer = Position { x: 5, y: 10 };
     let float = Position { x: 1.0, y: 4.0 };
@@ -11,9 +23,9 @@ fn exercise1() {
 // Exercise 2
 // Modify this struct to make the code work
 // Make it compile
-struct Point<T> {
-    x: T,
-    y: T,
+struct Point<T1, T2> {
+    x: T1,
+    y: T2,
 }
 
 fn exercise2() {
@@ -26,12 +38,12 @@ fn exercise2() {
 // Exercise 3
 // Make it compile
 // Add generic for Val to make the code work, DON'T modify the code in `main`.
-struct Val {
-    val: f64,
+struct Val <T> {
+    val: T,
 }
 
-impl Val {
-    fn value(&self) -> &f64 {
+impl <T> Val <T> {
+    fn value(&self) -> &T {
         &self.val
     }
 }
@@ -49,23 +61,28 @@ fn exercise3() {
 // Implementing logic
 // Run tests
 
-fn find_max<T>(collection: &[T]) -> Option<&T> {
-    todo!()
+fn find_max<T: Ord>(collection: &[T]) -> Option<&T> 
+{
+    collection.iter().max()
 }
 
 // Exercise 5 
 // Reverse the elements in a collection
 // Make it compile 
 // Run tests 
-fn reverse_collection<T>(collection: &[T]) {
-    todo!()
+fn reverse_collection<T: Clone>(collection: &[T]) -> Vec<T>
+{
+    let mut reversed = collection.to_vec();
+    reversed.reverse();
+    reversed
 }
 
 
 // Exercise 6
 // Function to check if a collection contains a specific value
-fn contains_value<T>(collection: &[T], value: &T) -> bool {
-    todo!()
+fn contains_value<T: PartialEq>(collection: &[T], value: &T) -> bool
+{
+    collection.contains(value)
 }
 
 // Unit tests
@@ -98,7 +115,7 @@ mod tests {
     #[test]
     fn test_reverse_collection_with_numbers() {
         let mut numbers = vec![1, 2, 3, 4, 5];
-        reverse_collection(&mut numbers);
+        numbers = reverse_collection(&mut numbers);
         assert_eq!(numbers, vec![5, 4, 3, 2, 1]);
     }
 
@@ -106,7 +123,7 @@ mod tests {
     #[test]
     fn test_reverse_collection_with_strings() {
         let mut strings = vec!["apple", "banana", "cherry", "durian"];
-        reverse_collection(&mut strings);
+        strings = reverse_collection(&mut strings);
         assert_eq!(strings, vec!["durian", "cherry", "banana", "apple"]);
     }
 
