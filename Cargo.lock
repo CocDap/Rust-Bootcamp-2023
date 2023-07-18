@@ -27,5 +27,9 @@ name = "ownership-borrowing"
 version = "0.1.0"
 
 [[package]]
+name = "state-machine-atm"
+version = "0.1.0"
+
+[[package]]
 name = "traits"
 version = "0.1.0"

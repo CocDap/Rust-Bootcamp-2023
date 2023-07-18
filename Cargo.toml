@@ -12,7 +12,8 @@ members = [
   "./exercises/complex-type",
   "./exercises/generic-type",
   "./exercises/traits",
-  "./exercises/error-handling"
+  "./exercises/error-handling",
+  "./final-project/state-machine-atm",
 
 ]
 
