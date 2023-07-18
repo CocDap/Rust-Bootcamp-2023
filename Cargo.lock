@@ -15,6 +15,10 @@ name = "complex-type"
 version = "0.1.0"
 
 [[package]]
+name = "error-handling"
+version = "0.1.0"
+
+[[package]]
 name = "generic-type"
 version = "0.1.0"
 

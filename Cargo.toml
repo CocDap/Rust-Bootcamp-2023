@@ -12,6 +12,7 @@ members = [
   "./exercises/complex-type",
   "./exercises/generic-type",
   "./exercises/traits",
+  "./exercises/error-handling"
 
 ]
 
@@ -42,6 +43,10 @@ path = "./exercises/generic-type/src/lib.rs"
 [[test]]
 name = "traits"
 path = "./exercises/traits/src/lib.rs"
+
+[[test]]
+name = "error-handling"
+path = "./exercises/error-handling/src/lib.rs"
 
 
 [dependencies]
