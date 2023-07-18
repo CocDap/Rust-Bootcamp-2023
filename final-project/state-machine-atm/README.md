@@ -4,5 +4,5 @@
 + Make it compile and add logic  in `state-machine-atm`
 + Run test
   ```
-    cargo test 
+    cargo test --test final-project
   ```

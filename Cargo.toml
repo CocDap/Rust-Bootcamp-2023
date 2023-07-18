@@ -50,4 +50,8 @@ name = "error-handling"
 path = "./exercises/error-handling/src/lib.rs"
 
 
+[[test]]
+name = "final-project"
+path = "./final-project/state-machine-atm/src/lib.rs"
+
 [dependencies]
