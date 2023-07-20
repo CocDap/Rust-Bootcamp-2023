@@ -5,18 +5,15 @@ fn exercise1() {
     let integer = Position { x: 5, y: 10 };
     let float = Position { x: 1.0, y: 4.0 };
 }
-struct Position<T> {
-    x: T,
-    y: T,
-}
+
 
 
 // Exercise 2
 // Modify this struct to make the code work
 // Make it compile
-struct Point<T, U> {
+struct Point<T> {
     x: T,
-    y: U,
+    y: T,
 }
 
 fn exercise2() {
@@ -29,12 +26,12 @@ fn exercise2() {
 // Exercise 3
 // Make it compile
 // Add generic for Val to make the code work, DON'T modify the code in `main`.
-struct Val<T>{
-    val: T,
+struct Val {
+    val: f64,
 }
 
-impl<T>Val<T>{
-    fn value(&self) -> &T{
+impl Val {
+    fn value(&self) -> &f64 {
         &self.val
     }
 }
@@ -52,23 +49,23 @@ fn exercise3() {
 // Implementing logic
 // Run tests
 
-fn find_max<T: Ord>(collection: &[T]) -> Option<&T> {
-    collection.iter().max()
+fn find_max<T>(collection: &[T]) -> Option<&T> {
+    todo!()
 }
 
 // Exercise 5 
 // Reverse the elements in a collection
 // Make it compile 
 // Run tests 
-fn reverse_collection<T>(collection: &mut [T]) {
-    collection.reverse();
+fn reverse_collection<T>(collection: &[T]) {
+    todo!()
 }
 
 
 // Exercise 6
 // Function to check if a collection contains a specific value
-fn contains_value<T: Eq>(collection: &[T], value: &T) -> bool {
-    collection.contains(value)
+fn contains_value<T>(collection: &[T], value: &T) -> bool {
+    todo!()
 }
 
 // Unit tests
