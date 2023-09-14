@@ -145,8 +145,8 @@ impl Shape for Rectangle {
     }
 }
 
-fn create_shape() -> impl Shape {
-    Circle { radius: 10.0 }
+fn create_shape() -> impl Shape { //trả về kiểu dữ liệu (struct Circle) mà trait (Shape) có impl cái trait (Shape) đó
+    Circle { radius: 10.0 } //hay thằng Shape có impl cho thằng Circle
 }
 // Box : smart pointer
 // kiểu như String, Vec::new()

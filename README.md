@@ -28,3 +28,6 @@ The goal of the course is to teach you basic Rust.
 ## Contact us
 + Discord:https://discord.gg/XgkcZyM8EC
 + Facebook: https://www.facebook.com/groups/vietnamblockchaininnovation
+
+## Docs
++ https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/match.html
